@@ -1,33 +1,19 @@
+mod config;
+mod phonotactics;
+mod weighted;
+
 use anyhow::{anyhow, Result};
-use serde::Deserialize;
 
-use std::{fs::File, io::BufReader};
-
-#[derive(Deserialize, Debug)]
-struct Class {
-	pub name: String,
-	pub disparity: f32,
-	pub phonemes: Vec<String>,
-}
-
-#[derive(Deserialize, Debug)]
-enum State {
-	Start,
-	Class(String),
-	End,
-}
-
-#[derive(Deserialize, Debug)]
-struct Phonotactics {
-	classes: Vec<Class>,
-	transitions: Vec<(State, Vec<(f32, State)>)>,
-}
+use crate::phonotactics::Phonotactics;
 
 fn main() -> Result<()> {
-	let file = File::open("phonotactics.ron")?;
-	let reader = BufReader::new(file);
-	let phonotactics: Phonotactics = ron::de::from_reader(reader)
-		.map_err(|err| anyhow!("Failed to parse phonotactics file: {err}"))?;
-	println!("{phonotactics:?}");
+	let path = std::env::args()
+		.nth(1)
+		.ok_or_else(|| anyhow!("No config file provide"))?;
+	let phonotactics = Phonotactics::load(path)?;
+	for _ in 0..10 {
+		let word = phonotactics.gen_word()?;
+		println!("{word}");
+	}
 	Ok(())
 }
