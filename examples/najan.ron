@@ -1,42 +1,88 @@
 (
-	classes: {
-		"consonant": {
-			"k": 1,
-			"g": 1,
-			"t": 1,
-			"d": 1,
+	collapse_duplicates: true,
+	start: ["Syllable"],
+	rules: {
+		// TODO: Enforce consistent voicing within a cluster.
+		"Syllable": {
+			["Syllable", "Syllable"]: 1,
+			["Onset", "Nucleus", "Coda"]: 3,
 		},
-		"vowel": {
-			"uh": 1,
-			"a": 1,
-			"e": 1,
-			"ih": 1,
-			"i": 1,
-			"u": 1,
-			"o": 1,
+		"Onset": { // TODO: weights
+			["Glide"]: 1,
+			["Flap"]: 1,
+			["Liquid"]: 1,
+			["Nasal"]: 1,
+			["Fricative"]: 1,
+			["PlosiveGlide"]: 1,
+			["PlosiveFricative"]: 1,
 		},
-	},
-	states: {
-		Start: (
-			emit: None,
-			transition_weights: {
-				State("consonant"): 4,
-				State("vowel"): 1,
-			},
-		),
-		State("consonant"): (
-			emit: Some("consonant"),
-			transition_weights: {
-				State("vowel"): 4,
-				End: 1,
-			},
-		),
-		State("vowel"): (
-			emit: Some("vowel"),
-			transition_weights: {
-				End: 2,
-				State("consonant"): 1,
-			},
-		),
+		"Nucleus": {
+			["Vowel"]: 5,
+			["Vowel", "Glide"]: 1,
+		},
+		"Coda": { // TODO: weights
+			["Flap"]: 1,
+			["Liquid"]: 1,
+			["Nasal"]: 1,
+			["FricativePlosive"]: 1,
+			["PlosiveFricative"]: 1,
+		},
+		"PlosiveGlide": {
+			["Plosive"]: 5,
+			["Plosive", "Glide"]: 1,
+		},
+		"PlosiveFricative": { // TODO: weights
+			["Plosive"]: 1,
+			["Plosive", "Fricative"]: 1,
+		},
+		"FricativePlosive": { // TODO: weights
+			["Fricative"]: 1,
+			["Fricative", "Plosive"]: 1,
+		},
+		"Glide": { // TODO: weights
+			["y"]: 1,
+			["w"]: 1,
+		},
+		"Flap": { // TODO: weights
+			["rh"]: 1,
+			["r"]: 1,
+		},
+		"Liquid": { // TODO: weights
+			["l"]: 1,
+		},
+		"Nasal": { // TODO: weights
+			["nh"]: 1,
+			["n"]: 1,
+			["m"]: 1,
+		},
+		"Fricative": { // TODO: weights
+			["x"]: 1,
+			["q"]: 1,
+			["s"]: 1,
+			["z"]: 1,
+			["c"]: 1,
+			["j"]: 1,
+			["th"]: 1,
+			["dh"]: 1,
+			["f"]: 1,
+			["v"]: 1,
+		},
+		"Plosive": { // TODO: weights
+			["k"]: 1,
+			["g"]: 1,
+			["t"]: 1,
+			["d"]: 1,
+			["p"]: 1,
+			["b"]: 1,
+		},
+		"Vowel": { // TODO: weights
+			["uh"]: 1,
+			["a"]: 1,
+			["e"]: 1,
+			["ih"]: 1,
+			["i"]: 1,
+			["u"]: 1,
+			["o"]: 1,
+		},
 	},
 )
