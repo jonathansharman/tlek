@@ -1,88 +1,119 @@
 (
 	collapse_duplicates: true,
-	start: ["Syllable"],
+	start: ["Onset", "Nucleus", "Rest"],
 	rules: {
-		// TODO: Enforce consistent voicing within a cluster.
-		"Syllable": {
-			["Syllable", "Syllable"]: 1,
-			["Onset", "Nucleus", "Coda"]: 3,
+		"Vowel": {
+			["uh"]: 5,
+			["a"]: 5,
+			["e"]: 5,
+			["ih"]: 5,
+			["i"]: 4,
+			["u"]: 3,
+			["o"]: 4,
 		},
-		"Onset": { // TODO: weights
-			["Glide"]: 1,
-			["Flap"]: 1,
-			["Liquid"]: 1,
-			["Nasal"]: 1,
-			["Fricative"]: 1,
-			["PlosiveGlide"]: 1,
-			["PlosiveFricative"]: 1,
+		"Glide": {
+			["y"]: 3,
+			["w"]: 2,
+		},
+		"Liquid": { ["l"]: 1 },
+		"Nasal": {
+			["nh"]: 3,
+			["n"]: 5,
+			["m"]: 4,
+		},
+		"VoicelessFlap": { ["rh"]: 1 },
+		"VoicedFlap": { ["r"]: 1 },
+		"VoicelessFricative": {
+			["x"]: 3,
+			["s"]: 4,
+			["c"]: 6,
+			["th"]: 7,
+			["f"]: 5,
+		},
+		"VoicedFricative": {
+			["q"]: 3,
+			["z"]: 4,
+			["j"]: 6,
+			["dh"]: 7,
+			["v"]: 5,
+		},
+		"VoicelessPlosive": {
+			["k"]: 6,
+			["t"]: 5,
+			["p"]: 3,
+		},
+		"VoicedPlosive": {
+			["g"]: 6,
+			["d"]: 5,
+			["b"]: 3,
+		},
+		"Onset": {
+			["VoicelessOnset"]: 1,
+			["VoicedOnset"]: 1,
 		},
 		"Nucleus": {
 			["Vowel"]: 5,
 			["Vowel", "Glide"]: 1,
 		},
-		"Coda": { // TODO: weights
-			["Flap"]: 1,
-			["Liquid"]: 1,
-			["Nasal"]: 1,
-			["FricativePlosive"]: 1,
-			["PlosiveFricative"]: 1,
+		"Rest": {
+			[]: 3,
+			["Coda"]: 12,
+			["VoicedCoda", "VoicedOnset", "Nucleus", "Rest"]: 2,
+			["VoicelessCoda", "VoicelessOnset", "Nucleus", "Rest"]: 2,
 		},
-		"PlosiveGlide": {
-			["Plosive"]: 5,
-			["Plosive", "Glide"]: 1,
+		"VoicelessOnset": {
+			["Glide"]: 8,
+			["Liquid"]: 3,
+			["Nasal"]: 9,
+			["VoicelessFlap"]: 2,
+			["VoicelessFricative"]: 15,
+			["VoicelessPlosiveGlide"]: 6,
+			["VoicelessPlosiveFricative"]: 6,
 		},
-		"PlosiveFricative": { // TODO: weights
-			["Plosive"]: 1,
-			["Plosive", "Fricative"]: 1,
+		"VoicelessPlosiveFricative": {
+			["VoicelessPlosive"]: 3,
+			["VoicelessPlosive", "VoicelessFricative"]: 1,
 		},
-		"FricativePlosive": { // TODO: weights
-			["Fricative"]: 1,
-			["Fricative", "Plosive"]: 1,
+		"VoicelessPlosiveGlide": {
+			["VoicelessPlosive"]: 5,
+			["VoicelessPlosive", "Glide"]: 1,
 		},
-		"Glide": { // TODO: weights
-			["y"]: 1,
-			["w"]: 1,
+		"VoicedOnset": {
+			["Glide"]: 8,
+			["Liquid"]: 3,
+			["Nasal"]: 9,
+			["VoicedFlap"]: 2,
+			["VoicedFricative"]: 15,
+			["VoicedPlosiveGlide"]: 6,
+			["VoicedPlosiveFricative"]: 6,
 		},
-		"Flap": { // TODO: weights
-			["rh"]: 1,
-			["r"]: 1,
+		"VoicedPlosiveGlide": {
+			["VoicedPlosive"]: 5,
+			["VoicedPlosive", "Glide"]: 1,
 		},
-		"Liquid": { // TODO: weights
-			["l"]: 1,
+		"VoicedPlosiveFricative": {
+			["VoicedPlosive"]: 3,
+			["VoicedPlosive", "VoicedFricative"]: 1,
 		},
-		"Nasal": { // TODO: weights
-			["nh"]: 1,
-			["n"]: 1,
-			["m"]: 1,
+		"Coda": {
+			["VoicelessCoda"]: 1,
+			["VoicedCoda"]: 1,
 		},
-		"Fricative": { // TODO: weights
-			["x"]: 1,
-			["q"]: 1,
-			["s"]: 1,
-			["z"]: 1,
-			["c"]: 1,
-			["j"]: 1,
-			["th"]: 1,
-			["dh"]: 1,
-			["f"]: 1,
-			["v"]: 1,
+		"VoicelessCoda": {
+			["Liquid"]: 3,
+			["Nasal"]: 12,
+			["VoicelessFlap"]: 2,
+			["VoicelessFricative"]: 12,
+			["VoicelessFricative", "VoicelessPlosive"]: 6,
+			["VoicelessPlosiveFricative"]: 9, // TODO: Restrict to affricates.
 		},
-		"Plosive": { // TODO: weights
-			["k"]: 1,
-			["g"]: 1,
-			["t"]: 1,
-			["d"]: 1,
-			["p"]: 1,
-			["b"]: 1,
-		},
-		"Vowel": { // TODO: weights
-			["uh"]: 1,
-			["a"]: 1,
-			["e"]: 1,
-			["ih"]: 1,
-			["i"]: 1,
-			["u"]: 1,
-			["o"]: 1,
+		"VoicedCoda": {
+			["Liquid"]: 3,
+			["Nasal"]: 12,
+			["VoicedFlap"]: 2,
+			["VoicedFricative"]: 12,
+			["VoicedFricative", "VoicedPlosive"]: 6,
+			["VoicedPlosiveFricative"]: 9, // TODO: Restrict to affricates.
 		},
 	},
 )
