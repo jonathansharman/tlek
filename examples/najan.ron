@@ -47,6 +47,43 @@
 			["d"]: 5,
 			["b"]: 3,
 		},
+		// Weights for plosive-fricative clusters are the product of the weights
+		// of the plosive and fricative, except that affricates are weighted
+		// (arbitrarily) higher. The nonphonemic affricates /tl/ and /dl/ are
+		// also included. The clusters /tx/, /px/, /dq/, and /pq/ are not
+		// generated.
+		"VoicelessPlosiveFricative": {
+			["k", "x"]: 36, // Affricate
+			["k", "s"]: 30,
+			["k", "c"]: 42,
+			["k", "th"]: 48,
+			["k", "f"]: 36,
+			["t", "s"]: 70, // Affricate
+			["t", "c"]: 80, // Affricate
+			["t", "th"]: 60, // Affricate
+			["t", "l"]: 40, // Affricate
+			["t", "f"]: 30,
+			["p", "s"]: 15,
+			["p", "c"]: 21,
+			["p", "th"]: 24,
+			["p", "f"]: 18,
+		},
+		"VoicedPlosiveFricative": {
+			["g", "q"]: 36, // Affricate
+			["g", "z"]: 30,
+			["g", "j"]: 42,
+			["g", "dh"]: 48,
+			["g", "v"]: 36,
+			["d", "z"]: 70, // Affricate
+			["d", "j"]: 80, // Affricate
+			["d", "dh"]: 60, // Affricate
+			["d", "l"]: 40, // Affricate
+			["d", "v"]: 30,
+			["b", "z"]: 15,
+			["b", "j"]: 21,
+			["b", "dh"]: 24,
+			["b", "v"]: 18,
+		},
 		"Onset": {
 			["VoicelessOnset"]: 1,
 			["VoicedOnset"]: 1,
@@ -62,58 +99,52 @@
 			["VoicelessCoda", "VoicelessOnset", "Nucleus", "Rest"]: 2,
 		},
 		"VoicelessOnset": {
-			["Glide"]: 8,
+			["Glide"]: 6,
 			["Liquid"]: 3,
 			["Nasal"]: 9,
 			["VoicelessFlap"]: 2,
-			["VoicelessFricative"]: 15,
-			["VoicelessPlosiveGlide"]: 6,
+			["VoicelessFricative"]: 12,
+			["VoicelessFricative", "Liquid"]: 2,
+			["VoicelessPlosive"]: 8,
+			["VoicelessPlosive", "Glide"]: 3,
+			// The next two rules can both produce the nonphonemic digraph
+			// affricate /tl/.
+			["VoicelessPlosive", "Liquid"]: 2,
 			["VoicelessPlosiveFricative"]: 6,
 		},
-		"VoicelessPlosiveFricative": {
-			["VoicelessPlosive"]: 3,
-			["VoicelessPlosive", "VoicelessFricative"]: 1,
-		},
-		"VoicelessPlosiveGlide": {
-			["VoicelessPlosive"]: 5,
-			["VoicelessPlosive", "Glide"]: 1,
-		},
 		"VoicedOnset": {
-			["Glide"]: 8,
+			["Glide"]: 6,
 			["Liquid"]: 3,
 			["Nasal"]: 9,
 			["VoicedFlap"]: 2,
-			["VoicedFricative"]: 15,
-			["VoicedPlosiveGlide"]: 6,
+			["VoicedFricative"]: 12,
+			["VoicedFricative", "Liquid"]: 2,
+			["VoicedPlosive"]: 8,
+			["VoicedPlosive", "Glide"]: 3,
+			// The next two rules can both produce the nonphonemic digraph
+			// affricate /dl/.
+			["VoicedPlosive", "Liquid"]: 2,
 			["VoicedPlosiveFricative"]: 6,
-		},
-		"VoicedPlosiveGlide": {
-			["VoicedPlosive"]: 5,
-			["VoicedPlosive", "Glide"]: 1,
-		},
-		"VoicedPlosiveFricative": {
-			["VoicedPlosive"]: 3,
-			["VoicedPlosive", "VoicedFricative"]: 1,
 		},
 		"Coda": {
 			["VoicelessCoda"]: 1,
 			["VoicedCoda"]: 1,
 		},
 		"VoicelessCoda": {
-			["Liquid"]: 3,
+			["Liquid"]: 4,
 			["Nasal"]: 12,
 			["VoicelessFlap"]: 2,
-			["VoicelessFricative"]: 12,
-			["VoicelessFricative", "VoicelessPlosive"]: 6,
-			["VoicelessPlosiveFricative"]: 9, // TODO: Restrict to affricates.
+			["VoicelessFricative"]: 15,
+			["VoicelessPlosive"]: 9,
+			["VoicelessPlosiveFricative"]: 12,
 		},
 		"VoicedCoda": {
-			["Liquid"]: 3,
+			["Liquid"]: 4,
 			["Nasal"]: 12,
 			["VoicedFlap"]: 2,
-			["VoicedFricative"]: 12,
-			["VoicedFricative", "VoicedPlosive"]: 6,
-			["VoicedPlosiveFricative"]: 9, // TODO: Restrict to affricates.
+			["VoicedFricative"]: 15,
+			["VoicedPlosive"]: 9,
+			["VoicedPlosiveFricative"]: 12,
 		},
 	},
 )
