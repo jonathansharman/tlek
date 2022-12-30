@@ -2,7 +2,7 @@
 
 A flexible tool to help build lexicons for
 [conlangs](https://en.wikipedia.org/wiki/Constructed_language). It takes a
-[probabalistic context-free
+[probabilistic context-free
 grammar](https://en.wikipedia.org/wiki/Probabilistic_context-free_grammar) and
 churns out random words.
 
@@ -22,7 +22,7 @@ For example, passing the following file would generate words like `baa`,
 	// until none of the symbols in the word have associated production rules.
 	start: ["SheepNoise"],
 	// Production rules map symbols to substitutions along with their
-	// probabalistic weights.
+	// probabilistic weights.
 	rules: {
 		"SheepNoise": {
 			// Replace "SheepNoise" with "baa" 3/4 of the time...
