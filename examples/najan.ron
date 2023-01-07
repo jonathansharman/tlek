@@ -3,10 +3,10 @@
 	start: ["Onset", "Nucleus", "Rest"],
 	rules: {
 		"Vowel": {
-			["uh"]: 5,
+			["ʊ"]: 5,
 			["a"]: 5,
 			["e"]: 5,
-			["ih"]: 5,
+			["ɪ"]: 5,
 			["i"]: 4,
 			["u"]: 3,
 			["o"]: 4,
@@ -17,24 +17,24 @@
 		},
 		"Liquid": { ["l"]: 1 },
 		"Nasal": {
-			["nh"]: 3,
+			["ŋ"]: 3,
 			["n"]: 5,
 			["m"]: 4,
 		},
-		"VoicelessFlap": { ["rh"]: 1 },
+		"VoicelessFlap": { ["x"]: 1 },
 		"VoicedFlap": { ["r"]: 1 },
 		"VoicelessFricative": {
-			["x"]: 3,
+			["h"]: 3,
 			["s"]: 5,
 			["c"]: 7,
-			["th"]: 8,
+			["θ"]: 8,
 			["f"]: 6,
 		},
 		"VoicedFricative": {
 			["q"]: 3,
 			["z"]: 5,
 			["j"]: 7,
-			["dh"]: 8,
+			["ð"]: 8,
 			["v"]: 6,
 		},
 		"VoicelessPlosive": {
@@ -53,35 +53,35 @@
 		// also included. The clusters /tx/, /px/, /dq/, and /pq/ are not
 		// generated.
 		"VoicelessPlosiveFricative": {
-			["k", "x"]: 36, // Affricate
+			["k", "h"]: 36, // Affricate
 			["k", "s"]: 30,
 			["k", "c"]: 42,
-			["k", "th"]: 48,
+			["k", "θ"]: 48,
 			["k", "f"]: 36,
 			["t", "s"]: 70, // Affricate
 			["t", "c"]: 80, // Affricate
-			["t", "th"]: 60, // Affricate
+			["t", "θ"]: 60, // Affricate
 			["t", "l"]: 40, // Affricate
 			["t", "f"]: 30,
 			["p", "s"]: 15,
 			["p", "c"]: 21,
-			["p", "th"]: 24,
+			["p", "θ"]: 24,
 			["p", "f"]: 18,
 		},
 		"VoicedPlosiveFricative": {
 			["g", "q"]: 36, // Affricate
 			["g", "z"]: 30,
 			["g", "j"]: 42,
-			["g", "dh"]: 48,
+			["g", "ð"]: 48,
 			["g", "v"]: 36,
 			["d", "z"]: 70, // Affricate
 			["d", "j"]: 80, // Affricate
-			["d", "dh"]: 60, // Affricate
+			["d", "ð"]: 60, // Affricate
 			["d", "l"]: 40, // Affricate
 			["d", "v"]: 30,
 			["b", "z"]: 15,
 			["b", "j"]: 21,
-			["b", "dh"]: 24,
+			["b", "ð"]: 24,
 			["b", "v"]: 18,
 		},
 		"Onset": {
