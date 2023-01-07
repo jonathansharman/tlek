@@ -85,8 +85,9 @@
 			["b", "v"]: 18,
 		},
 		"Onset": {
-			["VoicelessOnset"]: 1,
-			["VoicedOnset"]: 1,
+			[]: 1,
+			["VoicelessOnset"]: 2,
+			["VoicedOnset"]: 2,
 		},
 		"Nucleus": {
 			["Vowel"]: 5,
