@@ -34,4 +34,4 @@ For example, passing the following file would generate words like `baa`,
 )
 ```
 
-See the [examples](/examples) directory for more.
+See the [examples](/examples) directory for more example grammars.
